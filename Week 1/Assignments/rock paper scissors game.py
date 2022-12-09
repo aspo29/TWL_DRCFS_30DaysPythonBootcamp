@@ -15,7 +15,6 @@ times_played = 0
 # Continue until the player has played 5 times
 while times_played < 5:
 #while times_played in range(5):
-  # Asking the player for their actions
   player = input("Choose rock, paper, or scissors: ")
 
   # Generate the computer's move
