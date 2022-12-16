@@ -56,7 +56,6 @@ def rank(pwd: str) -> str:
     # i use the any() function to check if the password contains at least one lowercase letter, one digit, one uppercase letter,
     #and one symbol from the string.punctuation string. It also uses the islower(), isdigit(), and isupper() string methods 
     #to check the type of each character in the password.
-    return rank
    
 
 def option1():
@@ -92,15 +91,15 @@ def option1():
         outfile.write(f"{username},{password},{pwd_rank}\n")
 
         # Print to terminal
-    print("Username and password information written to Users-Pwds-Chked.txt")
+        print("Username and password information written to Users-Pwds-Chked.txt")
 
     ## END CODE HERE
 
-print('#'*80)
- # [INFO] Be sure to change userpwds with the name of variable that you give to the list of passwords
- print('[INFO] '+'Number of passwords checked:',str(len(usrpwds))) 
-print('[INFO] '+'The given rankings can be found in Users-Pwds-Chked.txt')
-print('#'*80)
+        print('#'*80)
+        #[INFO] Be sure to change userpwds with the name of variable that you give to the list of passwords
+        print('[INFO] '+'Number of passwords checked:',str(len(usrpwds))) 
+        print('[INFO] '+'The given rankings can be found in Users-Pwds-Chked.txt')
+        print('#'*80)
 
 def option2():
     '''
@@ -133,14 +132,14 @@ def option2():
         # While the required ranking is not met continue joining new Ualphabet, Lalphabet, chars and digits.
         
         ## START CODE HERE
-    while not (any(char.islower() for char in pwd) and any(char.isdigit() for char in pwd) and any(char.isupper() for char in pwd) and any(char in string.punctuation for char in pwd) and len(pwd) > 10):
-        pwd = ''
-        pwd += random.choice(Ualphabets)
-        pwd += random.choice(Lalphabets)
-        pwd += random.choice(chars)
-        pwd += random.choice(digits)
-        for i in range(random.randint(4, 8)):
-            pwd += random.choice(Ualphabets + Lalphabets + chars + digits)
+        while not (any(char.islower() for char in pwd) and any(char.isdigit() for char in pwd) and any(char.isupper() for char in pwd) and any(char in string.punctuation for char in pwd) and len(pwd) > 10):
+            pwd = ''
+            pwd += random.choice(Ualphabets)
+            pwd += random.choice(Lalphabets)
+            pwd += random.choice(chars)
+            pwd += random.choice(digits)
+            for i in range(random.randint(4, 8)):
+                pwd += random.choice(Ualphabets + Lalphabets + chars + digits)
 
         ## END CODE HERE
         return pwd
@@ -151,7 +150,6 @@ def option2():
     username = input("Enter username (max 20 characters): ")
     while len(username) > 20:
         print("Username must be 20 characters or less.")
-    username = input("Enter username (max 20 characters): ")
 
     ## END CODE HERE
 
@@ -159,48 +157,48 @@ def option2():
 
     ## START CODE HERE
     password = generate()
-save = input("Save password for user? (Y/N): ")
+    save = input("Save password for user? (Y/N): ")
 
-if save == "Y":
-    # Open Users-Pwds.txt file and append username and password
-    with open("Users-Pwds.txt", "a") as f:
-        f.write(f"{username},{password}\n")
-    print("Password saved for user.")
-else:
-    # Ask if user wants to generate different password
-    generate_different = input("Generate different password for user? (Y/N): ")
-    if generate_different == "Y":
-        password = generate()
-        print("New password generated:", password)
+    if save == "Y":
+        # Open Users-Pwds.txt file and append username and password
+        with open("Users-Pwds.txt", "a") as f:
+            f.write(f"{username},{password}\n")
+        print("Password saved for user.")
     else:
-        print("Password not saved for user.")
+        # Ask if user wants to generate different password
+        generate_different = input("Generate different password for user? (Y/N): ")
+        if generate_different == "Y":
+            password = generate()
+            print("New password generated:", password)
+        else:
+            print("Password not saved for user.")
 
     ## END CODE HERE
 
 def main():
 
     print('Welcome to my password ranking program')
-while True:
-    print('-'*40)
-    print('Please select one of 3 options')
-    print('option1. Rank password from an existing file \t option2. Generate a strong password \noption3. exit the program')
-    inp = input("Enter your option here:")
+    while True:
+        print('-'*40)
+        print('Please select one of 3 options')
+        print('option1. Rank password from an existing file \t option2. Generate a strong password \noption3. exit the program')
+        inp = input("Enter your option here:")
     
     # try converting the inp to integer form and then check condition if input was either option1, 2, 3 or something else. 
     # exit the loop by using the break command if the user selects 3 other wise use option1() and option 2() function 
      ## START CODE HERE
-    try:
-        inp = int(inp)
-        if inp == 1:
-            option1()
-        elif inp == 2:
-            option2()
-        elif inp == 3:
-            break
-        else:
-            print("Invalid option. Please try again.")
-    except ValueError:
-        print("Invalid input. Please enter a valid option.")
+        try:
+            inp = int(inp)
+            if inp == 1:
+                option1()
+            elif inp == 2:
+                option2()
+            elif inp == 3:
+                break
+            else:
+                print("Invalid option. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a valid option.")
         ## END CODE HERE
 
 
